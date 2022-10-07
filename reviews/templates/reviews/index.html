@@ -3,8 +3,14 @@
 {% block content %}
   <h1 class="text-center">확인</h1>
   {% for review in reviews %}
-    <a href="{% url 'reviews:detail' review.pk %}">{{review.title}}</a>
-    {{review.grade}}
+    <div class="text-bg-secondary">
+      <p>
+        <a href="{% url 'reviews:detail' review.pk %}">
+          {{review.title}}
+        </a>
+      </p>
+      <p>{{review.grade}}</p>
+    </div>
   {% endfor %}
   <a href="{% url 'reviews:create'%}">작성</a>
   {% endblock%}

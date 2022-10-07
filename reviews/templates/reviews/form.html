@@ -2,7 +2,13 @@
 {% load django_bootstrap5 %}
 {% block content %}
 
-  <form action="{% url 'reviews:create' %}" method="POST">
+  {% if request.resolver_match.url_name == 'create' %}
+    <h1>리뷰 작성</h1>
+  {% else %}
+    <h1>리뷰 수정</h1>
+  {% endif %}
+
+  <form action="" method="POST">
     <div class="container">
       {% csrf_token %}
       {% bootstrap_form review_form %}

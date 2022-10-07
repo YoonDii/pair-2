@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="container col-3 my-5 ms-0">
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" method="GET" type="search" placeholder="Search" name="search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+  </div>
+  {% for search in search_list %}
+    <div class="text-bg-secondary">
+      <p>
+        <a href="{% url 'reviews:detail' search.pk %}">
+          {{search.title}}
+        </a>
+      </p>
+      <p>{{search.grade}}</p>
+    </div>
+  {% endfor %}
+  <a href="{% url 'reviews:create'%}">작성</a>
+  {% endblock%}

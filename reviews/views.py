@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-
+from django.db.models import Q
 from reviews.forms import ReviewForm
 from reviews.models import Review
 
@@ -60,3 +60,20 @@ def delete(request, pk):
     review.delete()
 
     return redirect("reviews:index")
+
+
+def search(request):
+    all_data = Review.objects.all()
+    search = request.GET.get("search", "")
+    if search:
+        search_list = all_data.filter(Q(title__icontains=search))
+
+        context = {
+            "search_list": search_list,
+        }
+    else:
+        context = {
+            "search_list": all_data,
+        }
+
+    return render(request, "reviews/search.html", context)

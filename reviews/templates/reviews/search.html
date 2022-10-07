@@ -2,20 +2,60 @@
 {% load django_bootstrap5 %}
 {% block content %}
   <div class="container col-3 my-5 ms-0">
-  <form class="d-flex" role="search">
-    <input class="form-control me-2" method="GET" type="search" placeholder="Search" name="search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" method="GET" type="search" placeholder="Search" name="search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
   </div>
-  {% for search in search_list %}
-    <div class="text-bg-secondary">
-      <p>
-        <a href="{% url 'reviews:detail' search.pk %}">
-          {{search.title}}
-        </a>
-      </p>
-      <p>{{search.grade}}</p>
-    </div>
-  {% endfor %}
-  <a href="{% url 'reviews:create'%}">작성</a>
-  {% endblock%}
+
+  <form action="" class="m-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">글 제목</th>
+          <th scope="col">영화 제목</th>
+          <th scope="col">영화 점수</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        {% for review in search_list %}
+          <tr>
+            <th scope="row">{{review.id}}</th>
+            <td>
+              <a href="{% url 'reviews:detail' review.pk%}" class="link-success">
+                <p class="text-success">
+                  {{review.title}}</p>
+              </a>
+            </td>
+            <td>{{review.movie_name}}</td>
+            <td>{{review.grade}}</td>
+          </tr>
+          {% endfor%}
+        </tbody>
+      </table>
+    </form>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="success">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+
+      {% endblock%}

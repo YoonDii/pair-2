@@ -19,7 +19,7 @@ def create(request):
         review_form = ReviewForm(request.POST)
         if review_form.is_valid():
             review_form.save()
-            return redirect("reviews:index")
+            return redirect("reviews:search")
     else:
         review_form = ReviewForm()
     context = {
@@ -66,7 +66,9 @@ def search(request):
     all_data = Review.objects.all()
     search = request.GET.get("search", "")
     if search:
-        search_list = all_data.filter(Q(title__icontains=search))
+        search_list = all_data.filter(
+            Q(title__icontains=search) | Q(movie_name__icontains=search)
+        )
 
         context = {
             "search_list": search_list,

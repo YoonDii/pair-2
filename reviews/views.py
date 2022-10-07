@@ -7,12 +7,7 @@ from reviews.models import Review
 
 
 def index(request):
-    reviews = Review.objects.order_by("-id")
-
-    context = {
-        "reviews": reviews,
-    }
-    return render(request, "reviews/index.html", context)
+    return render(request, "reviews/index.html")
 
 
 def create(request):
@@ -65,7 +60,7 @@ def delete(request, pk):
 
 
 def search(request):
-    all_data = Review.objects.all()
+    all_data = Review.objects.order_by("-pk")
     search = request.GET.get("search", "")
     if search:
         search_list = all_data.filter(

@@ -6,8 +6,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Review(models.Model):
     title = models.CharField(max_length=20)
-    content = models.TextField()
     movie_name = models.CharField(max_length=20)
     grade = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -24,16 +24,14 @@
     <nav class="navbar navbar-expand-lg bg-white">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'reviews:index' %}"><img src="{% static 'images/wooxxdii.png' %}" style="width:128px; height:auto"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+
+        <div class="">
+          <ul class="navbar-nav flex-row me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item mx-3">
               <a class="nav-link active" aria-current="page" href="{% url 'reviews:search'%}">전체 글</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'reviews:create'%}">글 작성</a>
+            <li class="nav-item mx-3">
+              <a class="nav-link active" href="{% url 'reviews:create'%}">글 작성</a>
             </li>
           </ul>
         </div>

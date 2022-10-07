@@ -8,6 +8,7 @@ from reviews.models import Review
 
 def index(request):
     reviews = Review.objects.order_by("-id")
+
     context = {
         "reviews": reviews,
     }
@@ -34,6 +35,7 @@ def detail(request, pk):
     context = {
         "review": review,
     }
+
     return render(request, "reviews/detail.html", context)
 
 
@@ -59,7 +61,7 @@ def delete(request, pk):
 
     review.delete()
 
-    return redirect("reviews:index")
+    return redirect("reviews:search")
 
 
 def search(request):

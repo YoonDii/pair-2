@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+
+  <h1>디테일화면</h1>
+
+  {{review.title}}
+  {{review.content}}
+  {{review.grade}}
+  {{review.movie_name}}
+  {{review.created_at}}
+  {{review.updated_at}}
+
+  {% endblock%}

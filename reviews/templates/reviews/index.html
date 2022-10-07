@@ -2,5 +2,9 @@
 {% load django_bootstrap5 %}
 {% block content %}
   <h1 class="text-center">확인</h1>
+  {% for review in reviews %}
+    <a href="{% url 'reviews:detail' review.pk %}">{{review.title}}</a>
+    {{review.grade}}
+  {% endfor %}
   <a href="{% url 'reviews:create'%}">작성</a>
   {% endblock%}
